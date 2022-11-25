@@ -23,8 +23,8 @@ req_extensions = req_ext
 distinguished_name = dn
 
 [ dn ]
-C = UK
-ST = The Universe
+C = Universe
+ST = SolarSystem
 L = LowOrbit
 O = Laika
 OU = Laika
