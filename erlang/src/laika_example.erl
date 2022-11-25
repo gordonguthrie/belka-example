@@ -12,8 +12,8 @@
 start(_StartType, _StartArgs) ->
     ok = ssl:start(),
     Port = 1965,
-    CertFile = "/laika/priv/keys/server.crt",
-    KeyFile  = "/laika/priv/keys/server.key",
+    CertFile = "/laika-example/priv/keys/server.crt",
+    KeyFile  = "/laika-example/priv/keys/server.key",
     _PID = laika:start(Port, CertFile, KeyFile, {laika_example, dummyHandler}),
     laika_example_sup:start_link().
 
