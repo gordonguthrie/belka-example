@@ -36,15 +36,17 @@ cd /laika-example
 rebar3 shell
 ```
 
-You know have `laika-example` running in a shell
+You now have `laika-example` running in a shell
 
 Use your favourite Gemini client to attach to `gemini://localhost` and away you go:
 * on Android in the App store [Deedum](https://play.google.com/store/apps/details?id=ca.snoe.deedum&hl=en_GB&gl=US&pli=1)
-* on Mac, Windows, Linux, iOS (testflight) Android (beta) [Lagrange](https://gmi.skyjake.fi/lagrange/)
+* on Mac, Windows, Linux, iOS (testflight), Android (beta) [Lagrange](https://gmi.skyjake.fi/lagrange/)
 
 # In production
 
 In production you will need to rejig the certificates as the SSL connection is signed for the URL so gently frig `generate_self_signed_certs.sh`.
 
 At a minimum replace `localhost` with the URL you are deploying to, but it would be polite to replace Laika as well.
+
+The certificate files are read from hard code paths in the docker setup - you will need to fetch them in an appropriate manner for your application.
 

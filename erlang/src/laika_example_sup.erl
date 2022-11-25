@@ -1,5 +1,10 @@
 %%%-------------------------------------------------------------------
 %% @doc laiki example top level supervisor.
+%%
+%% In the example this supervisor is empty
+%% when you build your own app you will add server to handle state
+%% and start them here
+%%
 %% @end
 %%%-------------------------------------------------------------------
 

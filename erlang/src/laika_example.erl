@@ -7,7 +7,14 @@
 
 -behaviour(application).
 
--export([start/2, stop/1, dummyHandler/1]).
+%% normal application API
+-export([start/2, stop/1]).
+
+%% function exported so it can be passed as a handler
+%% to the Laika server
+%% see the documentation for [Laika](https://github.com/gordonguthrie/laika/blob/main/src/laika.erl)
+%% for an explanation of what happens under the hood
+-export([dummyHandler/1]).
 
 start(_StartType, _StartArgs) ->
     ok = ssl:start(),
