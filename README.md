@@ -2,7 +2,7 @@
 
 An example site using the [Laika Gemini Server](https://github.com/gordonguthrie/laika.git)
 
-# How to play with
+# How to play with Laika/Laika Example
 
 This method assumes you have [Docker](https://www.docker.com/get-started/) installed on your desktop. And doesn't require Erlang to be installed on your machine.
 
