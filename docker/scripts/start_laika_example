@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -it laika-example-laika-example-1 /bin/bash
