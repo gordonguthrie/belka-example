@@ -37,9 +37,9 @@ dummyHandler(#{path := ["test", "password"]} = Route) ->
     [
         <<"11 password plz\r\n">>
     ];
-dummyHandler(#{path := []} = Route) ->
+dummyHandler(#{path := [], id := Id} = Route) ->
     io:format("handler got route ~p~n", [Route]),
-    [
+    Top = [
         <<"20 text/gemini\r\n">>,
         <<"=> /test/input test input (status 10)\r\n">>,
         <<"=> /test/password test password input (status 11)\r\n">>,
@@ -47,7 +47,9 @@ dummyHandler(#{path := []} = Route) ->
         <<"=> /test/redirect/permanent test permanent redirects (status 31)\r\n">>,
         <<"=> /test/failure/temporary test temporary failure (status 40)\r\n">>,
         <<"=> /test/failure/permanent test permanent failure (status 50)\r\n">>,
-        <<"=> /test/certificate test mandatory certificates (status 60)\r\n">>,
+        <<"=> /test/certificate test mandatory certificates (status 60)\r\n">>
+    ],
+    Bottom = [
         <<"# Header 1\r\n">>,
         <<"## Header 2\r\n">>,
         <<"### Header 3\r\n">>,
@@ -55,13 +57,13 @@ dummyHandler(#{path := []} = Route) ->
         <<"* bongo\r\n">>,
         <<"# Chess\r\n">>,
         <<"``` alt text\r\n">>,
-        <<"   1  2  3  4  5  6  7  8 \r\n">>,
+        <<"   1  2  3  4  5  6  7  8  \r\n">>,
         <<"  ░░░   ░░░   ░░░   ░░░    \r\n"/utf8>>,
-        <<"a ░♜░ ♞ ░♝░ ♚ ░♛░ ♝ ░♞░  ♜ \r\n"/utf8>>,
+        <<"a ░♜░ ♞ ░♝░ ♚ ░♛░ ♝ ░♞░ ♜  \r\n"/utf8>>,
         <<"  ░░░   ░░░   ░░░   ░░░    \r\n"/utf8>>,
-        <<"      ░░░   ░░░   ░░░   ░░░ \r\n"/utf8>>,
-        <<"b  ♟︎  ░♟︎░ ♟︎ ░♟︎░ ♟︎ ░♟︎░ ♟︎ ░♟︎░ \r\n"/utf8>>,
-        <<"      ░░░   ░░░   ░░░   ░░░ \r\n"/utf8>>,
+        <<"     ░░░   ░░░   ░░░   ░░░ \r\n"/utf8>>,
+        <<"b  ♟︎ ░♟︎░ ♟︎ ░♟︎░ ♟︎ ░♟︎░ ♟︎ ░♟︎░ \r\n"/utf8>>,
+        <<"     ░░░   ░░░   ░░░   ░░░ \r\n"/utf8>>,
         <<"  ░░░   ░░░   ░░░   ░░░    \r\n"/utf8>>,
         <<"c ░░░   ░░░   ░░░   ░░░    \r\n"/utf8>>,
         <<"  ░░░   ░░░   ░░░   ░░░    \r\n"/utf8>>,
@@ -81,7 +83,15 @@ dummyHandler(#{path := []} = Route) ->
         <<"h  ♖ ░♘░ ♗ ░♕░ ♔ ░♗░ ♘ ░♖░ \r\n"/utf8>>,
         <<"     ░░░   ░░░   ░░░   ░░░ \r\n"/utf8>>,
         <<"```\r\n">>
-    ];
+    ],
+    case Id of
+        no_identity -> Top ++ Bottom;
+        _           -> URL = <<"/test/nonce/">>,
+                       NewURL = make_nonce(URL, Id),
+                       Middle = [list_to_binary([<<"=> ">>, NewURL, <<" test actions with nonces\r\n">>])],
+                       io:format("Middle is ~s~n", Middle),
+                       Top ++ Middle ++ Bottom
+    end;
 dummyHandler(#{path := ["test", "redirect", "temporary"]} = Route) ->
     io:format("handler got route ~p~n", [Route]),
     [
@@ -120,9 +130,38 @@ dummyHandler(#{path := ["test", "certificate"], id := #{key := K, name := N}} = 
         <<"20 text/gemini\r\n">>,
         <<"you can see it because you are logged in\r\n">>
     ];
+dummyHandler(#{path := ["test", "nonce", _Nonce], id := no_identity} = Route) ->
+    io:format("handler got route ~p~n", [Route]),
+    [
+        <<"60 need certificate\r\n">>
+    ];
+dummyHandler(#{path := ["test", "nonce", Nonce], id := Id} = Route) ->
+    io:format("handler got route ~p~n", [Route]),
+    <<"/test/nonce/", CorrectNonce/binary>> = make_nonce("/test/nonce/", Id),
+    case list_to_binary(Nonce) of
+        CorrectNonce ->
+            [
+                <<"20 text/gemini\r\n">>,
+                <<"your nonce for this page is correct\r\n">>
+            ];
+        _ ->
+            [
+                <<"20 text/gemini\r\n">>,
+                <<"your nonce for this page is wrong:\r\ngot: ">>,
+                Nonce,
+                <<"\r\nexp: ">>,
+                CorrectNonce,
+                <<"\r\n">>
+            ]
+    end;
 dummyHandler(Route) ->
     io:format("handler got route ~p~n", [Route]),
     [
     <<"20 text/gemini\r\n">>,
     <<"404\r\n">>
     ].
+
+make_nonce(URL, #{key := K}) ->
+    Nonce = crypto:hash(md5, list_to_binary([URL, integer_to_list(K)])),
+    SafeNonce = binary:encode_hex(Nonce),
+    list_to_binary([URL, SafeNonce]).
