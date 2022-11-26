@@ -50,3 +50,5 @@ At a minimum replace `localhost` with the URL you are deploying to, but it would
 
 The certificate files are read from hard code paths in the docker setup - you will need to fetch them in an appropriate manner for your application.
 
+Also the nonce needs to be salted or it can be trivially spoofed. The salt is hard coded in `laika_example.erl`.
+

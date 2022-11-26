@@ -7,6 +7,8 @@
 
 -behaviour(application).
 
+-define(SALT, "first dog in space").
+
 %% normal application API
 -export([start/2, stop/1]).
 
@@ -178,6 +180,6 @@ dummyHandler(Route) ->
     ].
 
 make_nonce(URL, #{key := K}) ->
-    Nonce = crypto:hash(md5, list_to_binary([URL, integer_to_list(K)])),
+    Nonce = crypto:hash(md5, list_to_binary([?SALT, URL, integer_to_list(K)])),
     SafeNonce = binary:encode_hex(Nonce),
     URL ++ binary_to_list(SafeNonce).
