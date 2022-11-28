@@ -1,0 +1,2 @@
+#!/bin/bash
+docker exec -it belka-example-belka-example-1 /bin/bash

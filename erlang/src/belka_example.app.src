@@ -1,8 +1,8 @@
-{application, laika_example,
+{application, belka_example,
  [{description, "An OTP Gemini Server"},
   {vsn, "0.1.0"},
   {registered, []},
-  {mod, {laika_example, []}},
+  {mod, {belka_example, []}},
   {applications,
    [kernel,
     stdlib

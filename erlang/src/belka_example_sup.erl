@@ -1,5 +1,5 @@
 %%%-------------------------------------------------------------------
-%% @doc laiki example top level supervisor.
+%% @doc belka example top level supervisor.
 %%
 %% In the example this supervisor is empty
 %% when you build your own app you will add server to handle state
@@ -8,7 +8,7 @@
 %% @end
 %%%-------------------------------------------------------------------
 
--module(laika_example_sup).
+-module(belka_example_sup).
 
 -behaviour(supervisor).
 

@@ -1,6 +1,14 @@
-# Laika Example  🚀🐕
+# Belka Example  🚀🐕
 
-An example site using the [Laika Gemini Server](https://github.com/gordonguthrie/laika.git)
+An example site using the [Belka Gemini Server](https://github.com/gordonguthrie/belka)
+
+# A better example
+
+This example is deliberately the simplest implementation with a dummy router where URLs are processed in a single multi-head function.
+
+A more sophisticated system would use the [Belka Router](https://github.com/gordonguthrie/bleka-router).
+
+An example of how that works is given in [Vega and Altair](https://github.com/gordonguthrie/vega_and_altair).
 
 # How to play with Laika/Laika Example
 
@@ -9,8 +17,8 @@ This method assumes you have [Docker](https://www.docker.com/get-started/) insta
 In one terminal:
 
 ```
-git clone git@github.com:gordonguthrie/laika-example.git
-cd laika-example/erlang
+git clone git@github.com:gordonguthrie/belka-example.git
+cd belka-example/erlang
 ./generate_self_signed_certs.sh
 cd ../
 docker-compose up
@@ -19,8 +27,8 @@ docker-compose up
 You now have Laika Example running in a terminal, open another terminal:
 
 ```
-cd laika-example/docker/scripts
-./start_laika_example
+cd belka-example/docker/scripts
+./start_belka_example
 ```
 
 This will bind that terminal to the running docker instance and log you in.
@@ -32,11 +40,11 @@ Any changes you make on your host will be reflected in the container.
 In that terminal:
 
 ```
-cd /laika-example
+cd /belka-example
 rebar3 shell
 ```
 
-You now have `laika-example` running in a shell
+You now have `belka-example` running in a shell
 
 Use your favourite Gemini client to attach to `gemini://localhost` and away you go:
 * on Android in the App store [Deedum](https://play.google.com/store/apps/details?id=ca.snoe.deedum&hl=en_GB&gl=US&pli=1)
@@ -46,9 +54,9 @@ Use your favourite Gemini client to attach to `gemini://localhost` and away you 
 
 In production you will need to rejig the certificates as the SSL connection is signed for the URL so gently frig `generate_self_signed_certs.sh`.
 
-At a minimum replace `localhost` with the URL you are deploying to, but it would be polite to replace Laika as well.
+At a minimum replace `localhost` with the URL you are deploying to, but it would be polite to replace Belka as well.
 
 The certificate files are read from hard code paths in the docker setup - you will need to fetch them in an appropriate manner for your application.
 
-Also the nonce needs to be salted or it can be trivially spoofed. The salt is hard coded in `laika_example.erl`.
+Also the nonce needs to be salted or it can be trivially spoofed. The salt is hard coded in `belka_example.erl`.
 

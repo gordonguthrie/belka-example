@@ -23,11 +23,11 @@ req_extensions = req_ext
 distinguished_name = dn
 
 [ dn ]
-C = Universe
+C = UK
 ST = SolarSystem
 L = LowOrbit
-O = Laika
-OU = Laika
+O = Belka
+OU = Belka
 CN = localhost
 
 [ req_ext ]
