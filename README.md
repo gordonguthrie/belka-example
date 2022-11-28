@@ -10,7 +10,7 @@ A more sophisticated system would use the [Belka Router](https://github.com/gord
 
 An example of how that works is given in [Vega and Altair](https://github.com/gordonguthrie/vega_and_altair).
 
-# How to play with Laika/Laika Example
+# How to play with Belka/Belka Example
 
 This method assumes you have [Docker](https://www.docker.com/get-started/) installed on your desktop. And doesn't require Erlang to be installed on your machine.
 
@@ -24,7 +24,7 @@ cd ../
 docker-compose up
 ```
 
-You now have Laika Example running in a terminal, open another terminal:
+You now have Belka Example running in a terminal, open another terminal:
 
 ```
 cd belka-example/docker/scripts
