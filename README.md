@@ -6,9 +6,13 @@ An example site using the [Belka Gemini Server](https://github.com/gordonguthrie
 
 This example is deliberately the simplest implementation with a dummy router where URLs are processed in a single multi-head function.
 
-A more sophisticated system would use the [Belka Router](https://github.com/gordonguthrie/bleka-router).
+A more sophisticated system would use a router like the [Belka Router](https://github.com/gordonguthrie/bleka-router).
 
-An example of how that works is given in [Vega and Altair](https://github.com/gordonguthrie/vega_and_altair).
+This example also comingles the layout/UI (what the user sees) with the code required to produce it.
+
+A more sophisticated system would use a templating system like [Belka Templates]((https://github.com/gordonguthrie/bleka-templates).
+
+An example of an app using both of them can be seen at [Vega and Altair](https://github.com/gordonguthrie/vega_and_altair).
 
 # How to play with Belka/Belka Example
 
