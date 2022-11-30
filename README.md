@@ -10,7 +10,7 @@ A more sophisticated system would use a router like the [Belka Router](https://g
 
 This example also comingles the layout/UI (what the user sees) with the code required to produce it.
 
-A more sophisticated system would use a templating system like [Belka Templates]((https://github.com/gordonguthrie/bleka-templates).
+A more sophisticated system would use a templating system like [Belka Templates](https://github.com/gordonguthrie/bleka-templates).
 
 An example of an app using both of them can be seen at [Vega and Altair](https://github.com/gordonguthrie/vega_and_altair).
 
