@@ -18,8 +18,16 @@
 
 -define(SERVER, ?MODULE).
 
+% # Public OTP API
+
+% This is a normal Erlang OTP application.
+
 start_link() ->
     supervisor:start_link({local, ?SERVER}, ?MODULE, []).
+
+% when you build your own app you will develop your own specialist
+% servers or even supervisor/server subsystem trees and you will
+% start them all from here
 
 %% sup_flags() = #{strategy => strategy(),         % optional
 %%                 intensity => non_neg_integer(), % optional
@@ -37,4 +45,4 @@ init([]) ->
     ChildSpecs = [],
     {ok, {SupFlags, ChildSpecs}}.
 
-%% internal functions
+% # There are no internal functions.

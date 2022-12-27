@@ -17,3 +17,8 @@ _build/
 _checkouts/
 
 .DS_Store
+
+_site/
+Gemfile.lock
+rebar.lock
+erlang/priv/

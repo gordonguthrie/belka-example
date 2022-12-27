@@ -9,9 +9,11 @@ services:
     environment:
       DISPLAY: host.docker.internal:0
     ports:
+      # Mapping the port to make the Jeckyll server accessible outside of the container
+      - "5000:5000"
       # Mapping the port to make the Gemini server accessible outside of the container
       - "1965:1965"
     volumes:
       - type: bind
-        source: ./erlang
+        source: ./
         target: /belka-example
