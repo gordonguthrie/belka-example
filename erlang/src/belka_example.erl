@@ -28,6 +28,8 @@
 % ***Remember:*** you gotta edit that batch file with your org name, the URL you are
 % serving `gemini://` no and your contact details and stuff
 
+% All applications start a top level supervisor and we do so here. When you read the source code you will see that that supervisor is not starting any children in this example.
+
 start(_StartType, _StartArgs) ->
     ok = ssl:start(),
     Port = 1965,

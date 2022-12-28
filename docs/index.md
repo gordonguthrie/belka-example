@@ -57,15 +57,22 @@ scheme      site     port    path              kvs            frag
 
 ```
 
-The `belka` server makes sure the `scheme`, `site` and `port` are fine and passes the rest up to the application
+The `belka` server makes sure the `scheme`, `site` and `port` are fine and passes the rest up to the application.
 
-jekyll <div>
-jekyll {% for item in site.data.contents.toc %}
-jekyll     <h3>{{ item.title }}</h3>
-jekyll       <ul>
-jekyll         {% for entry in item.subfolderitems %}
-jekyll           <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
-jekyll         {% endfor %}
-jekyll       </ul>
-jekyll   {% endfor %}
-jekyll </div>
+## How to read the code:
+
+* start with the [belka_example](./belka_example.html) module - this is how the application starts
+* then read the [belka_example_callbacks](belka_example_callbacks.html) - this is how this example handles the various actions
+* finally run the application and poke about the home page in a gemini browser and see how what you do causes which callback to be invoked
+^
+
+ <div>
+ {% for item in site.data.contents.toc %}
+     <h3>{{ item.title }}</h3>
+       <ul>
+         {% for entry in item.subfolderitems %}
+           <li><a href="{{ entry.url }}">{{ entry.page }}</a></li>
+         {% endfor %}
+       </ul>
+   {% endfor %}
+ </div>

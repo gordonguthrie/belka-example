@@ -40,6 +40,8 @@ a new set for your server can be generated with the batch file `generate_self_si
 ***Remember:*** you gotta edit that batch file with your org name, the URL you are
 serving `gemini://` no and your contact details and stuff
 
+All applications start a top level supervisor and we do so here. When you read the source code you will see that that supervisor is not starting any children in this example.
+
 ```erlang
 
 start(_StartType, _StartArgs) ->

@@ -1,13 +1,13 @@
 toc:
   - title: Contents
     subfolderitems:
-      - page: erlang/src - MODULE belka_example.app
-        url:  ./src/belka_example.app.html
-      - page: erlang/src - MODULE belka_example
-        url:  ./src/belka_example.html
-      - page: erlang/src - MODULE belka_example_callbacks
-        url:  ./src/belka_example_callbacks.html
-      - page: erlang/src - MODULE belka_example_sup
-        url:  ./src/belka_example_sup.html
-      - page: erlang/src - MODULE index
-        url:  ./src/index.html
+      - page: belka_example.app.src
+        url:  ./belka_example.app.html
+      - page: belka_example.erl
+        url:  ./belka_example.html
+      - page: belka_example_callbacks.erl
+        url:  ./belka_example_callbacks.html
+      - page: belka_example_sup.erl
+        url:  ./belka_example_sup.html
+      - page: index.erlang_architecture
+        url:  ./index.html
