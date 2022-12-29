@@ -2,7 +2,7 @@
 
 An example site using the [Belka Gemini Server](https://github.com/gordonguthrie/belka)
 
-# Architectural Documentation
+# Architecture Documents
 
 The [architectural documentation](https://gordonguthrie.github.io/belka_example) for this example is built with [Literate Code Reader](https://gordonguthrie.github.io/literatecodereader)
 
