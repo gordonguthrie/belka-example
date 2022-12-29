@@ -49,11 +49,11 @@ end
 Well Erlang is a pattern matching language and so you can push the case statements into what are called function heads. This app could be written as a single function call with a case statement for each of the 15 different cases handled. Instead its written as 15 different function definitions with a pattern match in each. When the function is called these act like a case statement:
 
 * if the parameters the function is being called with match the pattern match in the 1st clause then the first clause runs, if not the 2nd clause is checked.
-* if the parameters mactch the 2nd, its invoked, if not, carry on
+* if the parameters match the 2nd, its invoked, if not, carry on
 * and so on and so forth
 ^
 
-Just like in a case statement, the paramaters might match on multiple patterns so
+Just like in a case statement, the parameters might match on multiple patterns so
 the order in which you write the cases matters.
 
 ## The Complete `gemini://` Protocol Implementation
@@ -90,7 +90,7 @@ simpleRouter(#{path := ["test", "input"]} = Route) ->
 
 ### Route 3
 
-This path respondes to the next, 4th route. In that route a return type of `11` is used.  The client takes this as a request to do privacy and typically hides what the user is inputting - in the case of the next, 4th, invocation we are asking for a password so hidding it makes sense. For didact reasons we echo back what the user posted as plain text
+This path responds to the next, 4th route. In that route a return type of `11` is used.  The client takes this as a request to do privacy and typically hides what the user is inputting - in the case of the next, 4th, invocation we are asking for a password so hiding it makes sense. For didactic reasons we echo back what the user posted as plain text
 
 ```erlang
 simpleRouter(#{path := ["test", "password"], querykvs := [{Pwd, true}]} = Route) ->
@@ -194,7 +194,7 @@ simpleRouter(#{path := [], id := Id} = Route) ->
 
 ### Route 6
 
-This route tests that redirects work - hit this URL and a code `30` will be issued with a path the clients's job is to redirect to that path - in this case the one handled by clause 8 - this is expected to be a temporary redirect
+This route tests that redirects work - hit this URL and a code `30` will be issued with a path the client's job is to redirect to that path - in this case the one handled by clause 8 - this is expected to be a temporary redirect
 
 ```erlang
 simpleRouter(#{path := ["test", "redirect", "temporary"]} = Route) ->
@@ -339,7 +339,7 @@ simpleRouter(Route) ->
 
 ### The Nonce
 
-We use nonces to stop cross-site attacks. I want to user to do stuff:
+We use nonces to stop cross-site attacks. I want the user to do stuff:
 
 * create something
 * delete something
@@ -348,7 +348,7 @@ We use nonces to stop cross-site attacks. I want to user to do stuff:
 
 These actions are bound to a URL. If a bad hat knows the URL structure they can create a dummy link on another `gemini://` site and try and trick the user to click knowing it will have an effect on this one.
 
-To counter that we `hide` all actions that we want the user to take behind URLs that require them to have provided an idenity and then we decorate our action URLs with `nonce` segements generated from the base of the URL and the user's public key.
+To counter that we ***hide*** all actions that we want the user to take behind URLs that require them to have provided an identity and then we decorate our action URLs with ***nonce*** segments generated from the base of the URL and the user's public key.
 
 This gives us ***unguessable*** action URLs.
 

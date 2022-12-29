@@ -2,9 +2,9 @@
 
 ## Introduction To The Belka Family
 
-Belka is a family of components that you can use to buld [Gemini](https://gemini.circumlunar.space/) servers.
+Belka is a family of components that you can use to build [Gemini](https://gemini.circumlunar.space/) servers.
 
-`gemini://` is a comms protocol a bit more sophisticated, modern, secure and privacy aware than `gopher://` and a lot less sophisticated and surveilable than `http://`.
+`gemini://` is a comms protocol a bit more sophisticated, modern, secure and privacy aware than `gopher://` and a lot less sophisticated and snoop-on-able than `http://`.
 
 This makes it ideal to build services that are smol, fun, lightweight.
 
@@ -16,7 +16,7 @@ Belka is designed to support a pedagogic approach based on simplicity, profound 
 
 This repository is a very basic Gemini application which uses every aspect of the Gemini protocol and is designed to help you understand how to build and extend Gemini servers.
 
-The Belka Server (which is included in this repository as a dependecy, and is invoked the `rebar.config` which fetches dependencies for the application build.
+The Belka Server (which is included in this repository as a dependency, and is invoked the `rebar.config` which fetches dependencies for the application build.
 
 The Belka Server does all the plumbing to run a Gemini server for you and if you wish to understand in detail how it works, please see the [Belka Documentation](https://gordonguthrie.github.io/belka).
 
@@ -26,7 +26,7 @@ This example application starts a Belka Server and passes in a callback function
 
 We registered application is
 
-The `belka` server does all the set up and invokes the callback function with a data structure callled a route.
+The `belka` server does all the set up and invokes the callback function with a data structure called a route.
 
 It has the following map:
 
@@ -43,7 +43,7 @@ where an id can be one of:
 
 * the atom `no_identity`
 * a map with the keys `name` and `key`
-    * `key` is a crptographic public key for the user (and will be unique)
+    * `key` is a cryptographic public key for the user (and will be unique)
     * `name` is what the users wishes to be called and might not be unique
 ^
 
