@@ -37,6 +37,10 @@ don't accept URLs with non-default port numbers in, so YMMV
 conventional uses both self-signed keys and self-signed certificates and
 a new set for your server can be generated with the batch file `generate_self_signed_certs.sh`
 
+in the default example we are generating keys for the domain 'localhost' in production you would have a different name.
+
+In addition belka supports multiple hosts on the same server - so you can pass a list of site/certificate pairs in.
+
 ***Remember:*** you gotta edit that batch file with your org name, the URL you are
 serving `gemini://` no and your contact details and stuff
 
@@ -47,9 +51,12 @@ All applications start a top level supervisor and we do so here. When you read t
 start(_StartType, _StartArgs) ->
     ok = ssl:start(),
     Port = 1965,
-    CertFile = "/belka-example/priv/keys/server.crt",
-    KeyFile  = "/belka-example/priv/keys/server.key",
-    _PID = belka:start(Port, CertFile, KeyFile, {belka_example_callbacks, simpleRouter}),
+    CertFile = "./priv/keys/server.crt",
+    KeyFile  = "./priv/keys/server.key",
+    Cert = #{certfile => CertFile,
+             keyfile  => KeyFile},
+    Certs = [{"localhost", Cert}],
+    _PID = belka:start(Port, Certs, {belka_example_callbacks, simpleRouter}),
     belka_example_sup:start_link().
 
 stop(_State) ->
